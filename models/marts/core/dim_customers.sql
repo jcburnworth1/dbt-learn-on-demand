@@ -30,7 +30,6 @@ customer_orders AS (
 
 ),
 
-
 final AS (
 
     SELECT
