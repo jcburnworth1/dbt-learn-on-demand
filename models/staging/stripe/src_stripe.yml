@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: stripe
+    description: A clone of the payments application database
+    dataset: dbt_jburnworth
+    tables:
+      - name: payment
+        description: Raw payment data
+        loaded_at_field: _batched_at
+        freshness:
+          warn_after: {count: 12, period: hour} # Warning if no data twelve hours from now
+          error_after: {count: 24, period: hour} # Error if no data 24 hours from now
+        columns:
+          - name: id
+            description: Primary key for payments table
+            tests:
+              - unique
+              - not_null

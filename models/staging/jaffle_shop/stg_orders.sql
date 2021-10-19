@@ -6,7 +6,7 @@ WITH orders AS (
     ,order_date
     ,status
     FROM
-    dbt_jburnworth.orders
+    {{ source('jaffle_shop', 'orders') }}
 
 )
 

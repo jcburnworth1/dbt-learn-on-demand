@@ -9,7 +9,7 @@ WITH payment AS (
     ,amount / 100 AS amount
     ,created AS created_at
     FROM
-    dbt_jburnworth.payment
+    {{ source('stripe', 'payment') }}
 
 )
 
