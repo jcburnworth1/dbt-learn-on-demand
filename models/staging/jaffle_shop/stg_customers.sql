@@ -5,7 +5,7 @@ WITH customers AS (
     ,first_name
     ,last_name
     FROM
-    dbt_jburnworth.customers
+    {{ source('jaffle_shop', 'customers') }}
 
 )
 
