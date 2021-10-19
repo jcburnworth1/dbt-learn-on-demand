@@ -15,6 +15,10 @@ sources:
               - not_null
       - name: orders
         description: Raw orders data
+        loaded_at_field: _etl_loaded_at
+        freshness:
+          warn_after: {count: 12, period: hour} # Warning if no data twelve hours from now
+          error_after: {count: 24, period: hour} # Error if no data 24 hours from now
         columns:
           - name: id
             description: Primary key for orders
