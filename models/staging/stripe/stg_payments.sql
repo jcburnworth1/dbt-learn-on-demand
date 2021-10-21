@@ -5,11 +5,13 @@ WITH payment AS (
     ,orderid AS order_id
     ,paymentmethod AS payment_method
     ,status
-    -- Convert cents to dollars
-    ,amount / 100 AS amount
+    -- Convert cents to dollars using macro
+    ,{{ cents_to_dollars() }} AS amount
     ,created AS created_at
     FROM
     {{ source('stripe', 'payment') }}
+
+    {{ limit_data_in_dev('created') }}
 
 )
 
