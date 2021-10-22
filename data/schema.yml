@@ -1,0 +1,10 @@
+version: 2
+
+seeds:
+  - name: employees
+    description: Manual file of employees and corresponding customer_ids
+    columns:
+      - name: employee_id
+        tests:
+          - unique
+          - not_null
